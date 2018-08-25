@@ -14,18 +14,37 @@ Run inside of your server-data/resources folder
 git clone git@github.com:michaelhodgejr/esx_scratchoffs.git [esx]/esx_scratchoffs
 ```
 
+Create and modify your configuration file
+
+``
+  cp config.lua.default config.lua
+``
+
 Add to your server.cfg file
 
 ```
 start esx_scratchoffs
 ```
 
-Review and execute the esx_scratchoffs.sql file. If you wish to add additional store locations you can do that 
+Review and execute the esx_scratchoffs.sql file. If you wish to add additional store locations you can do that
 by adding an entry with an item name of "scratchoff" to the shops table for the various store locations where you wish for scratchoffs
-to be bought. 
+to be bought.
 
 # Additional Notes
-Right now the odds are 50/50. If you'd like to adjust that you can modify the "scratchoffIsAWinner" method in client/main.lua]
+The payout amount and the 1 in x chance of winning can be configured in the config file.
 
-The payout is set by default to a random amount between 1 and 10. You can adjust that by modifying the determineWinningAmount in client/main.lua
+# Upgrade Notes
 
+__Version 1.1.0 -> 1.2.0__
+
+Run the following SQL Statement:
+
+```
+INSERT INTO `items` (`name`, `label`, `limit`, `rare`, `can_remove`) VALUES ('scratchoff_used', 'Used Scratchoff Ticket', -1, 0, 1);
+```
+
+Create your configuration file
+
+```
+ cp config.lua.default config.lua
+```

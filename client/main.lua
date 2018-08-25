@@ -16,6 +16,7 @@ AddEventHandler("scratchoffs:view", function()
     dispenseReward(reward)
     showWonNotification(reward)
   else
+    TriggerServerEvent('scratchoffs:dispenseUsedScratchoff')
     showLostNotification()
   end
 
@@ -29,7 +30,7 @@ end)
 ]]
 function scratchoffIsAWinner()
   math.randomseed(GetGameTimer())
-  return (math.random(0,1) == 1)
+  return (math.random(1, Config.WinningOdds) == 1)
 end
 
 
@@ -41,7 +42,7 @@ end
 ]]
 function determineWinningAmount()
   math.randomseed(GetGameTimer())
-  return math.random(1,10)
+  return math.random(Config.WinningAmountMinimum, Config.WinningAmountMaximum)
 end
 
 --[[
