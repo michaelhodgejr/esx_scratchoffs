@@ -30,7 +30,7 @@ end)
 ]]
 function scratchoffIsAWinner()
   math.randomseed(GetGameTimer())
-  return (math.random(1, Config.WinningOdds) == 1)
+  return (math.random(1, Config.OneInChanceOfWinning) == 1)
 end
 
 
